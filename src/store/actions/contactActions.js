@@ -23,8 +23,8 @@ export function saveContact(contact) {
   return async dispatch => {
     const isAdd = !contact._id
     const updatedContact = await contactService.saveContact(contact)
-    if (isAdd) dispatch({ type: 'ADD_CONTACT', contact: updatedContact })
-    else dispatch({ type: 'UPDATE_CONTACT', updatedContact })
+    if (isAdd) return  dispatch({ type: 'ADD_CONTACT', contact: updatedContact })
+    else return dispatch({ type: 'UPDATE_CONTACT', updatedContact })
   }
 }
 export function setCurrContact(contactId) {

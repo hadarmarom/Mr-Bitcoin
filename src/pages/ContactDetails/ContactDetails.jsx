@@ -5,29 +5,34 @@ import { TransferFund } from '../../cmps/TransferFund/TransferFund';
 import contactService from '../../services/contactService'
 import { connect } from 'react-redux'
 import { setCurrContact } from '../../store/actions/contactActions'
-
-
+import { transferCoins } from '../../store/actions/userActions'
+import { saveContact } from '../../store/actions/contactActions'
 import './ContactDetails.scss'
 
 class _ContactDetails extends Component {
 
     state = {
-        contact: null
+        contact: this.props.contact
     }
 
     async componentDidMount() {
         const { id } = this.props.match.params;
         await this.props.setCurrContact(id)
-        console.log('this.props.contact :', this.props.contact )
-        this.setState({ contact: this.props.contact },()=>console.log('this.state:', this.state))
+        this.setState({ contact: this.props.contact }, () => console.log('this.state:', this.state))
     }
-    componentDidUpdate(){
+    componentDidUpdate() {
         console.log('updated!');
     }
 
     deleteContact = async (id) => {
         await contactService.deleteContact(id)
         this.props.history.push('/contact')
+    }
+    sendCoins = async (amount) => {
+        this.props.transferCoins(amount, this.state.contact._id)
+        let contact = { ... this.state.contact, coins: this.state.contact.coins + amount }
+        const { updatedContact } = await this.props.saveContact(contact)
+        this.setState({ contact: updatedContact })
     }
 
     render() {
@@ -43,7 +48,8 @@ class _ContactDetails extends Component {
                 <button onClick={() => this.deleteContact(contact._id)}>Delete Contact</button>
                 <Link className="link" to="/contact">Back</Link>
                 <Link className="link" to={"/contact/edit/" + contact._id}>Edit</Link>
-                <TransferFund contact={contact} />
+                <TransferFund sendCoins={this.sendCoins} contact={contact} />
+                
             </div>
         )
     }
@@ -55,7 +61,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    setCurrContact
+    setCurrContact,
+    transferCoins,
+    saveContact,
 }
 
 export const ContactDetails = connect(mapStateToProps, mapDispatchToProps)(_ContactDetails)
