@@ -1,0 +1,15 @@
+.app-header {
+    margin: 0 auto;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    font-size: 20px;
+    >:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 230px;
+    }
+}

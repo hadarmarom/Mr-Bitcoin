@@ -1,0 +1,9 @@
+.contactList {
+    ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto, 1fr);
+        list-style-type: none;
+        padding-inline-start: 0;
+    }
+}

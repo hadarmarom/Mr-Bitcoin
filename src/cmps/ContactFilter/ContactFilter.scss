@@ -1,0 +1,9 @@
+.contact-filter {
+  label:not(:first-of-type) {
+    margin-inline-start: 12px;
+  }
+  input,
+  select {
+    margin-inline-start: 6px;
+  }
+}

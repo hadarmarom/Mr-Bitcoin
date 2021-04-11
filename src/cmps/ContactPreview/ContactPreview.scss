@@ -1,0 +1,16 @@
+.contact-preview-li {
+    padding: 1em;
+    margin: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    transition: .3s;
+    img {
+        margin-top: 5px;
+        width: 100px;
+        height: 100px;
+    }
+    &:hover {
+        transform: translateY(-10px);
+    }
+}
