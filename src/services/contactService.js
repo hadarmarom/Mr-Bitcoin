@@ -148,18 +148,18 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function sort(arr) {
-  return arr.sort((a, b) => {
-    if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
-      return -1;
-    }
-    if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
-      return 1;
-    }
+// function sort(arr) {
+//   return arr.sort((a, b) => {
+//     if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
+//       return -1;
+//     }
+//     if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
+//       return 1;
+//     }
 
-    return 0;
-  })
-}
+//     return 0;
+//   })
+// }
 
 function getContacts(filterBy = null) {
   return new Promise((resolve, reject) => {
@@ -227,14 +227,14 @@ function getEmptyContact() {
   }
 }
 
-function filter(term) {
-  term = term.toLocaleLowerCase()
-  return contacts.filter(contact => {
-    return contact.name.toLocaleLowerCase().includes(term) ||
-      contact.phone.toLocaleLowerCase().includes(term) ||
-      contact.email.toLocaleLowerCase().includes(term)
-  })
-}
+// function filter(term) {
+//   term = term.toLocaleLowerCase()
+//   return contacts.filter(contact => {
+//     return contact.name.toLocaleLowerCase().includes(term) ||
+//       contact.phone.toLocaleLowerCase().includes(term) ||
+//       contact.email.toLocaleLowerCase().includes(term)
+//   })
+// }
 
 
 function _makeId(length = 10) {

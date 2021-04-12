@@ -6,6 +6,7 @@ import { ContactPage } from '../ContactPage'
 import { connect } from 'react-redux'
 import { loadContacts, setCurrContact } from '../../store/actions/contactActions'
 import './BitcoinApp.scss'
+import plusIcon from '../../assets/icons/plus.png'
 
 class _BitcoinApp extends Component {
 
@@ -35,7 +36,9 @@ class _BitcoinApp extends Component {
         if (!contacts) return <h1>div loading</h1>
         return (
             <div>
-                <Link className="link" to="/contact/edit/">Add Contact</Link>
+                <Link className="link" to="/contact/edit/">
+                    <img src={plusIcon} alt="Add Contact" />
+                </Link>
                 <ContactFilter onChangeFilter={this.onChangeFilter} />
                 <ContactPage contacts={contacts} onSelectContact={this.onSelectContact} />
             </div>

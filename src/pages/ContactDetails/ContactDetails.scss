@@ -1,8 +1,15 @@
-.contact-details {
-    >* {
+.contact-details-container {
+    > * {
         margin: 20px;
     }
     img {
+        width: 30px;
+        height: 30px;
+    }
+    p {
+        cursor: pointer;
+    }
+    > :first-child {
         width: 200px;
         height: 200px;
     }

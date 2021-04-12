@@ -3,7 +3,6 @@ import { Component } from 'react'
 import { bitcoinService } from '../../services/bitcoinService.js'
 import './HomePage.scss'
 import { Link } from 'react-router-dom'
-import { userService } from '../../services/userService.js'
 import { loadUser } from '../../store/actions/userActions'
 
 

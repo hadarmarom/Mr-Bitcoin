@@ -1,4 +1,3 @@
-import { bindActionCreators } from "redux"
 import { userService } from "../../services/userService"
 
 const INITIAL_STATE = {

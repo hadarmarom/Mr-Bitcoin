@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { HashRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import { AppHeader } from './cmps/AppHeader';
 import { BitcoinApp } from './pages/BitcoinApp/BitcoinApp';
@@ -9,11 +9,12 @@ import { HomePage } from './pages/HomePage';
 import { SignUp } from './pages/SignUp/SignUp';
 import { StatisticPage } from './pages/StatisticPage';
 
-export function App() {
+const _App = (props) => {
+  const loggedinUser = props.user
   return (
     <Router>
       <div className="App">
-        <AppHeader />
+        {loggedinUser && <AppHeader />}
         <Switch >
           <Route component={ContactEdit} path='/contact/edit/:id?' />
           <Route component={ContactEdit} path='/contact/edit' />
@@ -27,3 +28,11 @@ export function App() {
     </Router >
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.userReducer.user,
+  }
+}
+
+export const App = connect(mapStateToProps)(_App)

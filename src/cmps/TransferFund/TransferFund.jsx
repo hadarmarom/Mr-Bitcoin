@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import contactService from '../../services/contactService'
 import { transferCoins } from '../../store/actions/userActions'
 import { saveContact, getContactById } from '../../store/actions/contactActions'
+import increaseIcon from '../../assets/icons/increase.png'
 
 import './TransferFund.scss'
 
@@ -24,11 +25,12 @@ class _TransferFund extends Component {
         return (
             <div>
                 <div>Transfer coins to {contact.name} </div>
+                <img src={increaseIcon} alt=""/>
                 <form onSubmit={(ev) => {
                     ev.preventDefault()
                     return this.props.sendCoins(amount)
                 }}>
-                    <label htmlFor="amount">Amount</label>
+                    <label htmlFor="amount">Amount: </label>
                     <input type="number" id="amount" name="amount" value={amount} onChange={this.handleChange} />
                     <button>Transfer</button>
                 </form>

@@ -8,6 +8,10 @@ import { setCurrContact } from '../../store/actions/contactActions'
 import { transferCoins } from '../../store/actions/userActions'
 import { saveContact } from '../../store/actions/contactActions'
 import './ContactDetails.scss'
+import backIcon from '../../assets/icons/back.png'
+import coinsIcon from '../../assets/icons/coins.png'
+import editIcon from '../../assets/icons/edit.png'
+import deleteIcon from '../../assets/icons/delete.png'
 
 class _ContactDetails extends Component {
 
@@ -39,17 +43,16 @@ class _ContactDetails extends Component {
         const { contact } = this.state
         if (!contact) return <h1>Div loading</h1>
         return (
-            <div className="contact-details">
-                <img src={`https://robohash.org/${contact._id}`} />
+            <div className="contact-details-container">
+                <img src={`https://robohash.org/${contact._id}`} alt="" />
                 <h2>{contact.name}</h2>
                 <h4>{contact.phone}</h4>
                 <h4>{contact.email}</h4>
-                <h4>{contact.coins} coins</h4>
-                <button onClick={() => this.deleteContact(contact._id)}>Delete Contact</button>
-                <Link className="link" to="/contact">Back</Link>
-                <Link className="link" to={"/contact/edit/" + contact._id}>Edit</Link>
+                <h4>{contact.coins} <img src={coinsIcon} alt="Coins" /></h4>
                 <TransferFund sendCoins={this.sendCoins} contact={contact} />
-                
+                <Link className="link" to="/contact"><img src={backIcon} alt="Back" /></Link>
+                <Link className="link" to={"/contact/edit/" + contact._id}><img src={editIcon} alt="Edit" /></Link>
+                <p onClick={() => this.deleteContact(contact._id)}><img src={deleteIcon} alt="Delete contact" /></p>
             </div>
         )
     }

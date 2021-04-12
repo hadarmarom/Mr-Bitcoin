@@ -12,7 +12,7 @@ export function ContactPreview(props) {
         <Link className="link" to={'/contact/' + props.contact._id}>
             <li className="contact-preview-li" onClick={() => selectContact(props.contact._id)}>
                 <p>{props.contact.name}</p>
-                <img src={`https://robohash.org/${props.contact._id}`} />
+                <img src={`https://robohash.org/${props.contact._id}`} alt="Contact image" />
             </li>
         </Link>
     )

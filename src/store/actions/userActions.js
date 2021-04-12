@@ -1,4 +1,3 @@
-import contactService from "../../services/contactService"
 import { userService } from "../../services/userService"
 
 export function loadUser(username) {
